@@ -1,0 +1,24 @@
+{
+  "name": "clone-hero-current-song",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:jorgeramon/clone-hero-current-song.git",
+  "author": "Jorge Ramón <jorge.ramon2128@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "node src/index.js",
+    "start:dev": "nodemon src/index.js"
+  },
+  "dependencies": {
+    "@fastify/static": "^7.0.1",
+    "@fastify/view": "^8.2.0",
+    "dotenv": "^16.4.1",
+    "fastify": "^4.26.0",
+    "fastify-socket.io": "^5.0.0",
+    "pug": "^3.0.2",
+    "socket.io": "^4.7.4"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.3"
+  }
+}

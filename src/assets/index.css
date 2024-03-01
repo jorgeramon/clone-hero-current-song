@@ -1,0 +1,43 @@
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.container {
+  width: 100vw;
+  height: 100vh;
+}
+
+#current-song-container {
+  background-color: rgba(123, 31, 162, 0.55);
+  height: 130px;
+}
+
+#current-song span {
+  font-size: 5vw;
+  font-family: 'Ubuntu', sans-serif;
+  color: white;
+  text-shadow: 1px 1px 2px black;
+}
+
+#current-song i {
+  font-size: 5.5vw;
+  color: #fdd835;
+  margin-right: 20px;
+}
