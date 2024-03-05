@@ -1,4 +1,4 @@
-const logger = require("./logger");
+const logger = require("../util/logger");
 
 function pressAnyKeyAndContinue() {
   if (process.stdin.isTTY) {

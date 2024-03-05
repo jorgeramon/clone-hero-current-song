@@ -1,7 +1,7 @@
 const { BehaviorSubject } = require("rxjs");
 const { watchFile, readFileSync, existsSync } = require("node:fs");
 const { get } = require("./ini");
-const logger = require("./logger");
+const logger = require("../util/logger");
 
 const EMPTY_CURRENT_SONG = { song: null, artist: null, charter: null };
 

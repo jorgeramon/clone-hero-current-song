@@ -1,6 +1,6 @@
 const { readFileSync } = require("node:fs");
 const { ConfigIniParser } = require("config-ini-parser");
-const logger = require("./logger");
+const logger = require("../util/logger");
 
 const parser = new ConfigIniParser();
 const path = "./settings.ini";

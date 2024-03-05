@@ -1,4 +1,4 @@
-const logger = require("./logger");
+const logger = require("../util/logger");
 const { get } = require("./ini");
 const { io } = require("socket.io-client");
 const { Subject, takeUntil } = require("rxjs");

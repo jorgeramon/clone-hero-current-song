@@ -1,4 +1,4 @@
-const logger = require("./logger");
+const logger = require("../util/logger");
 const { pressAnyKeyAndExit } = require("./stdin");
 
 process.on("uncaughtException", async (err) => {
