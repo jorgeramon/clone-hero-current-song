@@ -21,8 +21,9 @@ socket.on("connect", () => {
     });
 });
 
-socket.on("disconnect", () => {
+socket.on("disconnect", (err) => {
   logger.info("Disconnected to the server...");
+  logger.error(err);
 
   if (disconnect$) {
     disconnect$.next(true);

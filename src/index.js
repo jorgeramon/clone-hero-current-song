@@ -8,7 +8,9 @@ const logger = require("./desktop/logger");
 const server = fastify();
 
 server
-  .register(fastifyIO)
+  .register(fastifyIO, {
+    maxHttpBufferSize: 1e8,
+  })
   .register(require("@fastify/view"), {
     engine: {
       pug: require("pug"),
