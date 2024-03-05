@@ -10,6 +10,9 @@ const server = fastify();
 server
   .register(fastifyIO, {
     maxHttpBufferSize: 1e8,
+    cors: {
+      origin: "*",
+    },
   })
   .register(require("@fastify/view"), {
     engine: {
