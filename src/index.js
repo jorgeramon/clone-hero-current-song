@@ -3,6 +3,7 @@ require("dotenv").config();
 const fastify = require("fastify");
 const fastifyIO = require("fastify-socket.io");
 const { join } = require("path");
+const logger = require("./desktop/logger");
 
 const server = fastify();
 
@@ -21,7 +22,25 @@ server
 
 server.get("/", (_, reply) => reply.view("index.pug"));
 
-server.ready();
+server.ready().then(() => {
+  server.io.of("/client").on("connect", (socket) => {
+    logger.info("Client connected...");
+
+    socket.on("current-song:server", () => {
+      logger.debug("[Client] Requesting current song...");
+      server.io.of("/desktop").emit("current-song:desktop");
+    });
+  });
+
+  server.io.of("/desktop").on("connect", (socket) => {
+    logger.info("Desktop connected...");
+
+    socket.on("song:server", (song) => {
+      logger.debug("[Desktop] Sending current song: " + JSON.stringify(song));
+      server.io.of("/client").emit("song:client", song);
+    });
+  });
+});
 
 server.listen({
   port: process.env.SERVER_PORT || 2000,

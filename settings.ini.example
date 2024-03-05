@@ -1,0 +1,4 @@
+[Socket]
+host=ws://my-server.com
+[CloneHero]
+currentSongPath=/path/to/currentsong.txt

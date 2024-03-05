@@ -6,19 +6,24 @@
   "author": "Jorge Ramón <jorge.ramon2128@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "node src/index.js",
-    "start:dev": "nodemon src/index.js"
+    "start:server": "nodemon src/index.js",
+    "start:desktop": "nodemon src/desktop/index.js"
   },
   "dependencies": {
     "@fastify/static": "^7.0.1",
     "@fastify/view": "^8.2.0",
+    "config-ini-parser": "^1.6.1",
     "dotenv": "^16.4.1",
     "fastify": "^4.26.0",
     "fastify-socket.io": "^5.0.0",
     "pug": "^3.0.2",
-    "socket.io": "^4.7.4"
+    "rxjs": "^7.8.1",
+    "socket.io": "^4.7.4",
+    "socket.io-client": "^4.7.4",
+    "winston": "^3.12.0"
   },
   "devDependencies": {
-    "nodemon": "^3.0.3"
+    "nodemon": "^3.0.3",
+    "pkg": "^5.8.1"
   }
 }

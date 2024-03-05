@@ -7,15 +7,23 @@ function hide() {
   container.classList.add("animate__fadeOut");
 }
 
-function show({ song, artist }) {
+function show(data) {
   container.classList.remove("animate__fadeOut");
   container.classList.add("animate__fadeIn");
-  song.innerText = song;
-  artist.innerText = artist;
+  song.innerText = data.song;
+  artist.innerText = data.artist;
 }
 
-const socket = io("/current-song");
+const socket = io("/client");
 
-socket.on("song", (data) => (data.song ? show(data) : hide()));
+socket.on("connect", () => {
+  console.info("Connected to the server...");
+  socket.emit("current-song:server");
+});
+
+socket.on("song:client", (data) => {
+  console.log("Received song:", JSON.stringify(data));
+  data.song ? show(data) : hide();
+});
 
 hide();
