@@ -11,10 +11,12 @@ const server = fastify();
 server
   .register(fastifyCors, {
     origin: "*",
+    methods: ["GET", "POST", "PUT", "DELETE"],
   })
   .register(fastifyIO, {
     cors: {
       origin: "*",
+      methods: ["GET", "POST", "PUT", "DELETE"],
     },
   })
   .register(require("@fastify/view"), {
@@ -35,10 +37,7 @@ server.ready().then(() => {
 
   server.io.engine.on("connection_error", (err) => {
     logger.error("Connection error");
-    logger.error("[Req] " + err.req);
-    logger.error("[Code] " + err.code);
-    logger.error("[Message] " + err.message);
-    logger.error("[Context] " + err.context);
+    logger.error(JSON.stringify(err));
   });
 
   server.io.of("/client").on("connect", (socket) => {
