@@ -4,12 +4,15 @@ const fastify = require("fastify");
 const fastifyIO = require("fastify-socket.io");
 const { join } = require("path");
 const logger = require("./desktop/logger");
+const fastifyCors = require("@fastify/cors");
 
 const server = fastify();
 
 server
+  .register(fastifyCors, {
+    origin: "*",
+  })
   .register(fastifyIO, {
-    maxHttpBufferSize: 1e8,
     cors: {
       origin: "*",
     },
