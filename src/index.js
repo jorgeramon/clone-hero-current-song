@@ -23,7 +23,7 @@ server
 server.get("/", (_, reply) => reply.view("index.pug"));
 
 server.ready().then(() => {
-  logger.debug("Listening port: " + process.env.SERVER_PORT || 2000);
+  logger.debug("Listening port: " + (process.env.SERVER_PORT || 2000));
 
   server.io.of("/client").on("connect", (socket) => {
     logger.info("Client connected...");
