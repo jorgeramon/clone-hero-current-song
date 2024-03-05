@@ -33,6 +33,14 @@ server.get("/", (_, reply) => reply.view("index.pug"));
 server.ready().then(() => {
   logger.debug("Listening port: " + (process.env.SERVER_PORT || 2000));
 
+  server.io.engine.on("connection_error", (err) => {
+    logger.error("Connection error");
+    logger.error("[Req] " + err.req);
+    logger.error("[Code] " + err.code);
+    logger.error("[Message] " + err.message);
+    logger.error("[Context] " + err.context);
+  });
+
   server.io.of("/client").on("connect", (socket) => {
     logger.info("Client connected...");
 
