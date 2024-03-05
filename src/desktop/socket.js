@@ -23,8 +23,11 @@ socket.on("connect", () => {
 
 socket.on("disconnect", () => {
   logger.info("Disconnected to the server...");
-  disconnect$.next(true);
-  disconnect$.unsubscribe();
+
+  if (disconnect$) {
+    disconnect$.next(true);
+    disconnect$.unsubscribe();
+  }
 });
 
 socket.on("current-song:desktop", () => {
